@@ -57,4 +57,4 @@ Para melhor funcionamento e organização do projeto é altamente recomendável 
    2. 'Projetos/2_Analises_Gerais.R';
    3. 'Projetos/3_Analises_de_Rede.R'.
 
-Na pasta 'Projetos', contém uma pasta 'Projetos/Relatorios', onde serão salvos todos as figuras ('Projetos/Relatorios/Figuras') e tabelas ('Projetos/Relatorios/Tabelas') geradas durante a execução do script.
+Na pasta 'Projetos', contém uma pasta 'Projetos/Relatorios', onde serão salvos todas as figuras ('Projetos/Relatorios/Figuras') e tabelas ('Projetos/Relatorios/Tabelas') geradas durante a execução do script.
