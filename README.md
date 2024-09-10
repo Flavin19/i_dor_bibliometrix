@@ -1,4 +1,4 @@
-# Análise Bibliométrica
+# Análise Bibliométrica (v 1.0.0 / 09.09.24)
 
 Bem-vindo ao projeto de Análise Bibliométrica! Este repositório contém ferramentas e métodos para realizar análises bibliométricas no R, com o objetivo de explorar e visualizar padrões e tendências na literatura científica, de uma forma bem automatizada.
 
@@ -17,14 +17,20 @@ A análise bibliométrica é uma técnica usada para medir e avaliar a produçã
 Para começar a usar este projeto, é necessário instalar alguns pacotes que são utilizados nas análises.
 
 ```{r}
+
+# ------------------------- Pacotes do Cran
+
 pacotes <- c("tidyverse", "bib2df", "janitor", "rscopus", "biblionetwork","RColorBrewer",
 "tidygraph", "ggraph", "ggnewscale",'stringi',"data.table",'openxlsx','ggwordcloud',
  "bibliometrix", "ggpubr","broom","viridis","treemapify","ggrepel",'igraph',
 'ggh4x','stringdist')
 
+# ------------------------- Pacotes do Github
+
 githubpacotes <- c("thomasp85/scico","agoutsmedt/networkflow","ParkerICI/vite",
                    'hrbrmstr/pluralize')
-gitlib <- c("scico","networkflow","vite",'pluralize')
+
+# ------------------------- Verficando se estão instalados
 
 for(i in pacotes){
   if (!i %in% installed.packages()) {
@@ -38,12 +44,18 @@ for(i in githubpacotes){
   }
 }
 
-for(i in pacotes){
-  library(i, character.only = TRUE)
-}
-
-for(i in gitlib){
-  library(i, character.only = TRUE)
-}
-
 ```
+## Uso
+
+A análise bibliométrica foi dividida em três scripts:
+
+1. Tratamento da base;
+2. Análises Gerais;
+3. Análises de Rede.
+
+
+
+
+
+
+
