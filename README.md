@@ -1,10 +1,10 @@
 # Análise Bibliométrica (v 1.0.0 / 09.09.24)
 
-Bem-vindo ao projeto de Análise Bibliométrica! Este repositório contém ferramentas e métodos para realizar análises bibliométricas no R, com o objetivo de explorar e visualizar padrões e tendências na literatura científica, de uma forma bem automatizada, facilitando ainda mais o uso do pacote 'Bibliometrix'
+Bem-vindo ao projeto de Análise Bibliométrica! Este repositório contém ferramentas e métodos para realizar análises bibliométricas no R, com o objetivo de explorar e visualizar padrões e tendências na literatura científica, de uma forma bem automatizada, facilitando ainda mais o uso do pacote 'Bibliometrix'.
 
 ## Sobre
 
-A análise bibliométrica é uma técnica usada para medir e avaliar a produção acadêmica e o impacto de publicações científicas. Este projeto oferece um conjunto de scripts e ferramentas para coletar, processar e visualizar dados bibliométricos a partir de bases de dados acadêmicas extraídos do [**SCOPUS**](https://www.scopus.com).
+A análise bibliométrica é uma técnica usada para medir e avaliar a produção acadêmica e o impacto de publicações científicas. Este projeto oferece um conjunto de scripts e ferramentas para coletar, processar e visualizar dados bibliométricos a partir de bases de dados acadêmicas extraídos do [**SCOPUS**](https://www.scopus.com) no formato 'BIB'.
 
 ## Funcionalidade
 
