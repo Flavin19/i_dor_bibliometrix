@@ -1,6 +1,6 @@
 # Análise Bibliométrica (v 1.0.0 / 09.09.24)
 
-Bem-vindo ao projeto de Análise Bibliométrica! Este repositório contém ferramentas e métodos para realizar análises bibliométricas no R, com o objetivo de explorar e visualizar padrões e tendências na literatura científica, de uma forma bem automatizada.
+Bem-vindo ao projeto de Análise Bibliométrica! Este repositório contém ferramentas e métodos para realizar análises bibliométricas no R, com o objetivo de explorar e visualizar padrões e tendências na literatura científica, de uma forma bem automatizada, facilitando ainda mais o uso do pacote 'Bibliometrix'
 
 ## Sobre
 
@@ -47,15 +47,14 @@ for(i in githubpacotes){
 ```
 ## Uso
 
-A análise bibliométrica foi dividida em três scripts:
+Para melhor funcionamento e organização do projeto é altamente recomendável seguir as seguintes etapas:
 
-1. Tratamento da base;
-2. Análises Gerais;
-3. Análises de Rede.
+1. Instalar os pacotes necessários com o script acima;
+2. Realizar o download da pasta 'Projeto' com todos itens e sub-pastas neles;
+3. Colocar os arquivos com os dados para análise dentro da pasta 'Projeto/Bases';
+4. Executar os scripts seguindo a ordenação do nome:
+   1. 'Projetos/1_Tratando_Base.R';
+   2. 'Projetos/2_Analises_Gerais.R';
+   3. 'Projetos/3_Analises_de_Rede.R'.
 
-
-
-
-
-
-
+Na pasta 'Projetos', contém uma pasta 'Projetos/Relatorios', onde serão salvos todos as figuras ('Projetos/Relatorios/Figuras') e tabelas ('Projetos/Relatorios/Tabelas') geradas durante a execução do script.
