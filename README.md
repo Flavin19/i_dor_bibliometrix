@@ -4,12 +4,11 @@ Bem-vindo ao projeto de Análise Bibliométrica! Este repositório contém ferra
 
 ## Sobre
 
-A análise bibliométrica é uma técnica usada para medir e avaliar a produção acadêmica e o impacto de publicações científicas. Este projeto oferece um conjunto de scripts e ferramentas para coletar, processar e visualizar dados bibliométricos a partir de bases de dados acadêmicas extraídos do **SCOPUS**.
+A análise bibliométrica é uma técnica usada para medir e avaliar a produção acadêmica e o impacto de publicações científicas. Este projeto oferece um conjunto de scripts e ferramentas para coletar, processar e visualizar dados bibliométricos a partir de bases de dados acadêmicas extraídos do [**SCOPUS**](https://www.scopus.com).
 
 ## Funcionalidade
 
-* Coleta de Dados: Scripts para extrair dados de bibliotecas como PubMed, Scopus, Web of Science e Google Scholar;
-* Processamento de Dados: Métodos para limpar e preparar dados bibliométricos;
+* Processamento de Dados: Métodos para limpar e preparar os dados bibliométricos;
 * Visualização: Ferramentas para criar gráficos e diagramas, como redes de co-citação, análises de autores e tendências temporais;
 * Análise Estatística: Cálculo de métricas como fator de impacto, índice h, e análise de citações.
 
