@@ -5,7 +5,7 @@
 pacotes <- c("tidyverse", "bib2df", "janitor", "rscopus", "biblionetwork","RColorBrewer",
 "tidygraph", "ggraph", "ggnewscale",'stringi',"data.table",'openxlsx','ggwordcloud',
  "bibliometrix", "ggpubr","broom","viridis","treemapify","ggrepel",'igraph',
-'ggh4x','stringdist')
+'ggh4x','stringdist','maps')
 
 githubpacotes <- c("thomasp85/scico","agoutsmedt/networkflow","ParkerICI/vite",
                    'hrbrmstr/pluralize')
