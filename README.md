@@ -23,7 +23,7 @@ Para começar a usar este projeto, é necessário instalar alguns pacotes que s�
 pacotes <- c("tidyverse", "bib2df", "janitor", "rscopus", "biblionetwork","RColorBrewer",
 "tidygraph", "ggraph", "ggnewscale",'stringi',"data.table",'openxlsx','ggwordcloud',
  "bibliometrix", "ggpubr","broom","viridis","treemapify","ggrepel",'igraph',
-'ggh4x','stringdist')
+'ggh4x','stringdist','maps')
 
 # ------------------------- Pacotes do Github
 
