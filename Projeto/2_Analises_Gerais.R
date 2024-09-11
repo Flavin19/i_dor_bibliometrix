@@ -23,41 +23,12 @@ mainfindings(resultsobj)
 # ---------------------------------------------------------------------------- #
 # Annual Scientific Production
 
-anos_pulo = 5 # de 5 a 5 anos, 10 a 10, 15 a 15 ...
-ano_inicial = 1991 ## Em que anoo grafico vai comecar
-
-Anos1 = DescTools::RoundTo(dados$PY,5,floor)
-quebras = sort(unique(Anos1))
-
-quebras = case_when(quebras <= (ano_inicial-1) ~ paste0("<",str_sub(ano_inicial, start = 3)),
-quebras > 2019 ~  "20-23",
-.default = paste0(str_sub(quebras, start= 3),"-",str_sub(quebras+(anos_pulo - 1), start= 3)))
-
-quebras <- unique(quebras)
-
-Anos1 = case_when(Anos1 <= (ano_inicial-1) ~ paste0("<",str_sub(ano_inicial, start = 3)),
-Anos1 > 2019 ~  "20-23",
-.default = paste0(str_sub(Anos1, start= 3),"-",str_sub(Anos1+(anos_pulo - 1), start= 3)))
-
-data.frame(Anos = Anos1) |> filter(!is.na(Anos)) |> count(Anos) |>
-  left_join(data.frame(Anos = quebras, ordem = 1:length(quebras))) |> 
-  ggplot(aes(x = reorder(Anos,ordem), y= n, group = 1))+
-  geom_area(fill = "grey50",alpha = 0.15)+
-  geom_line(linewidth = 0.5)+
-  theme_f(expandy = c(0,5,0,15), expandx =  c(0.05,0,0.05,0),
-          namex = 'Years', namey = 'Frequency', sizep =  2)
-
-ggsave("Relatorios/Figuras/Annual Scientific Production_Agrupado.png" ,
-       width = 22, height = 12, units = "cm")
-
 Anos = dados$PY
 Anos = data.frame(Anos = Anos) |> filter(!is.na(Anos)) |> 
-  count(Anos) |>
-  bind_rows(data.frame(Anos = ano_inicial:year(Sys.Date()),n = 0)) |>
-  mutate(Anos = case_when(Anos <= (ano_inicial-1) ~ ano_inicial,
- .default = Anos)) |> group_by(Anos) |> reframe(n = sum(n)) |> 
-  mutate(ordem = 1:n(), Anos = str_sub(Anos, start= 3),
-  Anos = c(paste0('<',str_sub(ano_inicial, start= 3)),Anos[-1]))
+  count(Anos) |>  
+  bind_rows(data.frame(Anos = min(dados$PY):year(Sys.Date()),n = 0)) |>
+  group_by(Anos) |> reframe(n = sum(n)) |>
+  mutate(ordem = 1:n(), Anos = str_sub(Anos, start= 3))
   
 Anos |> 
 ggplot(aes(x = reorder(Anos,ordem), y= n, group = 1))+
