@@ -23,19 +23,13 @@ mainfindings(resultsobj)
 # ---------------------------------------------------------------------------- #
 # Annual Scientific Production
 
-Anos = dados$PY
-Anos = data.frame(Anos = Anos) |> filter(!is.na(Anos)) |> 
-  count(Anos) |>  
-  bind_rows(data.frame(Anos = min(dados$PY):year(Sys.Date()),n = 0)) |>
-  group_by(Anos) |> reframe(n = sum(n)) |>
-  mutate(ordem = 1:n(), Anos = str_sub(Anos, start= 3))
-  
-Anos |> 
-ggplot(aes(x = reorder(Anos,ordem), y= n, group = 1))+
+dados |> count(PY) |>
+ggplot(aes(x = as.character(PY), y= n, group = 1))+
   geom_area(fill = "grey50",alpha = 0.15)+
   geom_line(linewidth = 0.5)+
 theme_f(expandy = c(0,5,0,10), namex = 'Years', namey = 'Frequency',
-        sizep =  2, breaksx = Anos$Anos[seq(1,length(Anos$Anos),2)])
+        sizep =  2)+
+  theme(axis.text.x = element_text(angle = 90))
 
 ggsave("Relatorios/Figuras/Annual Scientific Production.png" ,
        width = 22, height = 12, units = "cm")
