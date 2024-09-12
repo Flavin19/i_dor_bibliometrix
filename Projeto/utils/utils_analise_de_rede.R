@@ -14,7 +14,7 @@ for(i in c(pacotes,gsub(".*/", "",githubpacotes))){
   library(i, character.only = TRUE)
 }
 
-rm(pacotes,i,githubpacotes,gitlib)
+rm(pacotes,i,githubpacotes)
 
 # -----------------------------------------------------------------------------#
 
@@ -156,7 +156,7 @@ refciting <- function(M){
 
 }
 
-ggconetwork <- function(ref,filterf = 5, top_n = 15,
+ggconetwork <- function(ref,filterf = 5, top_n = 15, weight_threshold = 2,
                         top_n_per_com =2, weightf = 0.05){
 
   direct_citation <- ref$REFERENCIAS
@@ -173,26 +173,6 @@ ggconetwork <- function(ref,filterf = 5, top_n = 15,
 
   references_filtered <- references_filtered |> select(new_id_ref,!new_id_ref)
 
-  for(i in 1:20){
-    
-    edges <- biblionetwork::biblio_cocitation(filter(direct_citation, new_id_ref %in% references_filtered$new_id_ref),
-                                              "citing_id", "new_id_ref",weight_threshold = i)
-    if(had_warning(tbl_main_component(nodes = references_filtered, edges = edges, directed = FALSE))){
-      
-      weight_threshold = i - 1
-      
-      break
-      
-    }
-    
-    if(weight_threshold < 1){
-      
-      weight_threshold = 1
-      
-    }
-  }
-  
-  
   edges <- biblionetwork::biblio_cocitation(filter(direct_citation, new_id_ref %in% references_filtered$new_id_ref),
                                             "citing_id", "new_id_ref", weight_threshold = weight_threshold)
 
@@ -208,8 +188,7 @@ ggconetwork <- function(ref,filterf = 5, top_n = 15,
     unique() |>
     nrow()
 
-  pal <- unique(c(brewer.pal(12,"Set3"),brewer.pal(8,"Set2"),brewer.pal(9,"Set1"),
-           brewer.pal(12,"Paired")))
+  pal <- unique(c(brewer.pal(12,"Set3"),brewer.pal(8,"Set2"),brewer.pal(9,"Set1")))
   set.seed(1)
   palette <- sample(pal,nb_communities, replace = F)
 
@@ -276,9 +255,8 @@ ggconetworkplot <- function(conet,filtro= 0){
       theme(panel.background  = element_rect(colour = "white",fill = "white"))
 
   }else{
-  filtroc = conet$clusters
-  id <- as.list(conet$graph)$node$color[as.list(conet$graph)$node$year == filtroc$year[filtro] &
-  as.list(conet$graph)$node$first_author_surname == filtroc$first_author_surname[filtro]]
+    
+  id <- conet$community_labels$color[filtro]
 
   conet$graph |>
     activate(nodes) |>
