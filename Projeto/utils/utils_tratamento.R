@@ -14,7 +14,7 @@ for(i in c(pacotes,gsub(".*/", "",githubpacotes))){
   library(i, character.only = TRUE)
 }
 
-rm(pacotes,i,githubpacotes,gitlib)
+rm(pacotes,i,githubpacotes)
 
 # -----------------------------------------------------------------------------#
 
