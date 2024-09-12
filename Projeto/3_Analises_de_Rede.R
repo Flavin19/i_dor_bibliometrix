@@ -13,40 +13,37 @@ load('Bases/base.RData')
 
 ref <- refciting(dados)
 
-conet <- ggconetwork(ref,filterf = 3)
+conet <- ggconetwork(ref,filterf = 5)
 
 ggconetworkplot(conet)
 
 ggsave("Relatorios/Figuras/cocitacao_geral.png", width = 22, height = 16, units = "cm")
 
-conet$cluster |> arrange(year) 
+conet$cluster |>
   write.xlsx("Relatorios/Tabelas/cocitacao_geral_cluster.xlsx")
 
 for(i in 1:nrow(conet$clusters)){
-  Filtro = i
   
-  ggconetworkplot(conet,Filtro)
+  ggconetworkplot(conet,filtro = i)
   
-  ggsave(paste0("Relatorios/Figuras/cocitacao_filtro_",Filtro,".png"),
+  ggsave(paste0("Relatorios/Figuras/cocitacao_cluster_",i,".png"),
          width = 22, height = 16, units = "cm")
 }
 
 # CORTE ANOS
 
-cortes <- c(0,2000,2005,2010,2015,2020,2023)
-
-i = 1
+cortes <- c(min(dados$PY)-1,2000,2005,2010,2015,max(dados$PY))
 
 for(i in 1:(length(cortes)-1)){
   
   corte1 = cortes[i]
   corte2 = cortes[i+1]
   
-  ref <- refciting(dados |> filter(PY > corte1,PY <= corte2))
+  ref_ano <- refciting(dados |> filter(PY > corte1,PY <= corte2))
   
-  conet <- ggconetwork(ref)
+  conet_ano <- ggconetwork(ref_ano,filterf = 3,weight_threshold = 2)
   
-  ggconetworkplot(conet)
+  ggconetworkplot(conet_ano)
   
   ggsave(paste0("Relatorios/Figuras/cocitacao_corte_",corte1,"_",corte2,".png"),
          width = 22, height = 16, units = "cm")
@@ -57,13 +54,17 @@ for(i in 1:(length(cortes)-1)){
 # Co-citation Network por tema
 
 conet$community_labels$Community_name
-temas <- paste0(1:11) ## coloque aqui os temas seguindo a ordem do vetor acima
+temas <- c('Teste1','Teste2',"") ## coloque aqui os temas seguindo a ordem do vetor acima
 
 conet_tema <- conet
 
-conet_tema$community_labels<- conet_tema$community_labels |> mutate(Community_name = temas)
+conet_tema$community_labels<- conet_tema$community_labels |> 
+  mutate(Community_name = temas)
 
 ggconetworkplot(conet_tema)
+
+ggsave("Relatorios/Figuras/cocitacao_tema.png",
+                            width = 22, height = 16, units = "cm")
 
 # ---------------------------------------------------------------------------- #
 # Co-occurrence Network by SCOPUS
@@ -78,7 +79,7 @@ direct_citation<- direct_citation |> left_join(references) |> select(new_id_ref,
 
 ref <- list(REFERENCIAS = direct_citation, REFERENCIASUNICOS = references)
 
-ggconetworkword(ref,filterf = 7, weight_threshold = 4,top_n = 3,
+ggconetworkword(ref,filterf = 15, weight_threshold = 4,top_n = 3,
                 top_n_per_com = 5, weightf = 0.025)
 
 ggsave("Relatorios/Figuras/Co_occurrence_Network_by_SCOPUS.png",
