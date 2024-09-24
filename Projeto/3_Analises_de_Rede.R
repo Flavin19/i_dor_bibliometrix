@@ -54,7 +54,7 @@ for(i in 1:(length(cortes)-1)){
 # Co-citation Network por tema
 
 conet$community_labels$Community_name
-temas <- c('Teste1','Teste2',"") ## coloque aqui os temas seguindo a ordem do vetor acima
+temas <- c('Teste1','Teste2',"") ## coloque aqui os temas ou os clusters seguindo a ordem do vetor acima
 
 conet_tema <- conet
 
